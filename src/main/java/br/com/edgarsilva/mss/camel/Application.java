@@ -11,17 +11,15 @@ import org.wso2.carbon.mss.MicroservicesRunner;
  */
 public class Application {
 	public static void main(String[] args) throws Exception {
+		
 		new MicroservicesRunner(7888, 8888).deploy(new MSSCamelService()).start();
+		//Start the REST Endpoints
+		
 		ConfigurableApplicationContext appContext = new ClassPathXmlApplicationContext("camel-context.xml");
-		CamelContext camelContext = SpringCamelContext.springCamelContext(
-				appContext, false);
-		try {
-			camelContext.start();
-			//Thread.sleep(3000);
-		} finally {
-			//camelContext.stop();
-			//appContext.close();
-		}
+		CamelContext camelContext = SpringCamelContext.springCamelContext(appContext, false);
+		//Starting Camel Routes based on Spring
+        camelContext.start();
+		
 		
 	}
 }
