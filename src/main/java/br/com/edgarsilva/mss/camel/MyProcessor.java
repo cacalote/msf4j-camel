@@ -10,6 +10,8 @@ import java.util.Date;
 public class MyProcessor implements Processor {
 
 public void process(Exchange exchange) throws Exception {
-   exchange.getIn().setBody(" ###### WSO2 TIME HeartBeat " + new Date());
+   exchange.getIn().setBody(" ###### WSO2 File Received:  " + new Date() + "/n " +
+   exchange.getIn().getBody());
+   
    }
 }

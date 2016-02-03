@@ -12,8 +12,7 @@ import org.wso2.carbon.mss.MicroservicesRunner;
 public class Application {
 	public static void main(String[] args) throws Exception {
 		new MicroservicesRunner(7888, 8888).deploy(new MSSCamelService()).start();
-		ConfigurableApplicationContext appContext = new ClassPathXmlApplicationContext
-				("camel-context.xml");
+		ConfigurableApplicationContext appContext = new ClassPathXmlApplicationContext("camel-context.xml");
 		CamelContext camelContext = SpringCamelContext.springCamelContext(
 				appContext, false);
 		try {
